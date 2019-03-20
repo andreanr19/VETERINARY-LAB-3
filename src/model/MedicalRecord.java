@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class MedicalRecord {
 	
-	//ATRIBUTOS
+	//CONSTANTES
 	
 	public final static String OPEN = "Open";
 	public final static String CLOSED = "Closed";
@@ -14,19 +14,25 @@ public class MedicalRecord {
 	private String status;
 	private String symptom;
 	private String diagnosis;
+	private int day;
+	private int month;
+	private int year;
 	
 	//RELACIONES
 	
 	private ArrayList<Medicine> medicinePet; //medicinas que ha recibido la mascota
 	private Pet thePetRecord;
 	//CONSTRUCTOR
-	public MedicalRecord(String status, String symptom, String diagnosis) {
+	public MedicalRecord(String symptom, String diagnosis, int day, int month, int year) {
 		
 		
 		
-		this.status = status;
+		this.status = OPEN;
 		this.symptom = symptom;
 		this.diagnosis = diagnosis;
+		this.day=day;
+		this.month=month;
+		this.year=year;
 		
 		medicinePet= new ArrayList<Medicine>();
 	}

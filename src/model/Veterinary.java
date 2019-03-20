@@ -96,14 +96,22 @@ public class Veterinary {
 		this.clientVeterinary = clientVeterinary;
 	}
 
+	public Room[] getMinirooms() {
+		return minirooms;
+	}
+
+	public void setMinirooms(Room[] minirooms) {
+		this.minirooms = minirooms;
+	}
+
 	public boolean verifyClientExistance(int idNewClient) {
 		boolean verifyClient = false;
-	
 
-		for (int i = 0; i < clientVeterinary.size(); i++) {
+		for (int i = 0; i < clientVeterinary.size() && verifyClient==false; i++) {
 
 			if (clientVeterinary.get(i).getId() == (idNewClient)) {
-				
+				verifyClient = true;
+
 			} else {
 				verifyClient = false;
 			}
@@ -111,5 +119,24 @@ public class Veterinary {
 		}
 		return verifyClient;
 	}
+
+	public String showInformation() {
+
+		String msj = "";
+
+		for (int i = 0; i < minirooms.length; i++) {
+			if (minirooms[i].getPet()==false) {
+				msj += "\n La mascota que está actualmente en el cuarto " + minirooms[i].getnumRoom() + " es "
+						+ minirooms[i].getPetRoom().getName();
+				
+				
+			} else {
+				msj += "\n El cuarto "+ minirooms[i].getnumRoom() +  "no tiene mascota";
+			}
+		}
+		return msj;
+	}
+	
+	//public String show
 
 }
