@@ -21,13 +21,12 @@ public class Pet {
 	
 	//CONSTRUCTOR
 	
-	public Pet(String name, int age, double weigth, char animalType, Client owner, MedicalHistory history){
+	public Pet(String name, int age, double weigth, char animalType){
 		this.name=name;
 		this.age=age;
 		this.weigth=weigth;
 		this.animalType=animalType;
-		this.owner=owner;
-		this.history=history;
+		
 	}
 
 	//Métodos sets and gets
@@ -61,5 +60,13 @@ public class Pet {
 	}
 	public void setHistory(MedicalHistory history) {
 		this.history=history;
+	}
+
+	public double getWeigth() {
+		return weigth;
+	}
+
+	public void setWeigth(double weigth) {
+		this.weigth = weigth;
 	}
 }

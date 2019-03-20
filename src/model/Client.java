@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.ArrayList.*;
 
 public class Client {
 	
@@ -26,7 +27,15 @@ public class Client {
 	}
 	
 	
+	public void addPet(Pet newPet){
+		petClient.add(newPet);
+		petClient.get(petClient.size()-1).setOwner(this);
+
+	}
+
 	//MÉTODOS GET Y SET
+
+
 	public String getName(){
 		return name;
 	}
@@ -50,6 +59,16 @@ public class Client {
 	}
 	public void setPhone(int phone){
 		this.phone=phone;
+	}
+
+
+	public ArrayList<Pet> getPetClient() {
+		return petClient;
+	}
+
+
+	public void setPetClient(ArrayList<Pet> petClient) {
+		this.petClient = petClient;
 	}
 
 }

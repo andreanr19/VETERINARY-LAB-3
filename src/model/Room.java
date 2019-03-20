@@ -3,7 +3,8 @@ package model;
 public class Room {
 	
 	//ATRIBUTOS
-	
+
+	private String numRoom;
 	private boolean pet;
 	
 	//RELACION
@@ -11,8 +12,9 @@ public class Room {
 	
 	//CONSTRUCTOR
 	
-	public Room(boolean pet, Pet petRoom) {
+	public Room(String numRoom, boolean pet) {
 		this.pet=pet;
+		this.numRoom=numRoom;
 		this.petRoom=petRoom;
 	}
 	
@@ -24,6 +26,14 @@ public class Room {
 	
 	public void setPet(boolean pet) {
 		this.pet=pet;
+	}
+
+	public Pet getnumRoom(){
+		return petRoom;
+	}
+
+	public void setnumRoom(String numRoom){
+		this.numRoom=numRoom;
 	}
 	
 	public Pet getPetRoom() {
