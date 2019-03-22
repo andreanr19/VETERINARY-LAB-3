@@ -107,7 +107,7 @@ public class Veterinary {
 	public boolean verifyClientExistance(int idNewClient) {
 		boolean verifyClient = false;
 
-		for (int i = 0; i < clientVeterinary.size() && verifyClient==false; i++) {
+		for (int i = 0; i < clientVeterinary.size() && verifyClient == false; i++) {
 
 			if (clientVeterinary.get(i).getId() == (idNewClient)) {
 				verifyClient = true;
@@ -125,18 +125,40 @@ public class Veterinary {
 		String msj = "";
 
 		for (int i = 0; i < minirooms.length; i++) {
-			if (minirooms[i].getPet()==false) {
+			if (minirooms[i].getIsAviableRoom() == false) {
 				msj += "\n La mascota que está actualmente en el cuarto " + minirooms[i].getnumRoom() + " es "
 						+ minirooms[i].getPetRoom().getName();
-				
-				
+
 			} else {
-				msj += "\n El cuarto "+ minirooms[i].getnumRoom() +  "no tiene mascota";
+				msj += "\n El cuarto " + minirooms[i].getnumRoom() + "no tiene mascota";
 			}
 		}
 		return msj;
 	}
-	
-	//public String show
+
+	public String showInformationHistorial() {
+		String msj = "";
+
+		for (int i = 0; i < minirooms.length; i++) {
+			if (minirooms[i].getIsAviableRoom() == false) {
+				//System.out.println("indice i: "+i);
+				for (int k = 0; k < minirooms[i].getPetRoom().
+						getHistory().getMedicalRecordV().size(); k++) {
+					msj += "Diagnostico: " + "The pet " + minirooms[i].getPetRoom().getName() +" tiene el siguiente historial clinico"
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis()
+							+ ", Síntoma: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom() 
+							+ "En el día: "
+							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
+							" del mes: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
+							" del año: " 
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
+				}
+
+			}
+		}
+		return msj;
+	}
 
 }

@@ -5,15 +5,15 @@ public class Room {
 	// ATRIBUTOS
 
 	private String numRoom;
-	private boolean pet;
+	private boolean isAviableRoom;
 
 	// RELACION
 	private Pet petRoom;
 
 	// CONSTRUCTOR
 
-	public Room(String numRoom, boolean pet) {
-		this.pet = pet;
+	public Room(String numRoom, boolean isAviableRoom) {
+		this.isAviableRoom = isAviableRoom;
 		this.numRoom = numRoom;
 		petRoom=null;
 
@@ -21,12 +21,12 @@ public class Room {
 
 	// MÉTODOS GET Y SET
 
-	public boolean getPet() {
-		return pet;
+	public boolean getIsAviableRoom() {
+		return isAviableRoom;
 	}
 
-	public void setPet(boolean pet) {
-		this.pet = pet;
+	public void setIsAviableRoom(boolean pet) {
+		this.isAviableRoom = pet;
 	}
 
 	public String getnumRoom() {
@@ -43,9 +43,11 @@ public class Room {
 
 	public void setPetRoom(Pet petRoom) {
 		if (petRoom != null) {
-			this.petRoom = petRoom;
-			pet = false;
+			isAviableRoom = false;
+		}else {
+			isAviableRoom=true;
 		}
+		this.petRoom = petRoom;
 	}
 
 }

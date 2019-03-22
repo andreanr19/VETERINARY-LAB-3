@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.Scanner;
+
 import model.*;
 
 public class main {
@@ -11,12 +12,12 @@ public class main {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Desea comenzar la aplicacion");
 		while (input.nextLine().equalsIgnoreCase("SI")) {
-			
 
 			System.out.println("WELCOME TO THE VETERINARY! WHAT WOULD YOU LIKE TO DO?");
-			String options = "1.To know Veterinary's information " + "\n2.To register "
-					+ "\n3.To register a pet and his owner " + "\n4.To discharge from the veterinary a pet "
-					+ "\n5.To look for the open Medical History "
+			String options = "1.To know Veterinary's information " + "\n2.To register a new client and a new pet"
+					+ "\n3.To look for the current pets in the rooms"
+					+ "\n4.To look for the historial clinical of the pet "
+					+ "\n5.To discharge from the veterinary a pet "
 					+ "\n6.To create a report of the open medical history "
 					+ "\n7.To calculate the cost of a hospitalization "
 					+ "\n8.To know the income based on hospitalizations " + "\n9.To know a Pet's Room";
@@ -64,13 +65,15 @@ public class main {
 					int answer = Integer.parseInt(input.nextLine());
 					if (answer == 1) {
 						int contador = 0;
-						for (int i = 0; i < myVeterinary.getMinirooms().length; i++) {
-							if (myVeterinary.getMinirooms()[i].getPet() == false) {
+						boolean stop = false;
+						for (int i = 0; i < myVeterinary.getMinirooms().length && stop == false; i++) {
+							if (myVeterinary.getMinirooms()[i].getIsAviableRoom() == false) {
 								contador++;
 							} else {
 								myVeterinary.getMinirooms()[i].setPetRoom(newPet);
+								stop = true;
 							}
-							
+
 						}
 						String msj = "";
 						if (contador == myVeterinary.getMinirooms().length) {
@@ -79,38 +82,169 @@ public class main {
 						} else {
 							msj += "La mascota ha sido añadida al cuarto " + (contador + 1);
 							System.out.println(msj);
-							
-							System.out.println("Deme el sintoma que presenta la mascota");
-							String newPetSymptom= input.nextLine();
-							System.out.println("Deme una breve descripcion de lo que afecta a su mascota");
-							String newPetDiagnosis= input.nextLine();
-							System.out.println("Ingrese la fecha actual dd/mm/aa");
-							int newDay=Integer.parseInt(input.nextLine());
-							int newMonth=Integer.parseInt(input.nextLine());
-							int newYear=Integer.parseInt(input.nextLine());
-							
-							MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth, newYear);
-							newMrPet.setThePetRecord(newPet);
-							
-							MedicalHistory newMdPet = new MedicalHistory();
-							newMdPet.getMedicalRecordV().add(newMrPet);
-							newMdPet.setTheClient(newClient);
-							newMdPet.setThePet(newPet);
-							System.out.println("Se ha creado exitosamente la historia clinica de la mascota");
-						}
-						
-						
 
+							//System.out.println("Tell us the symptom the pets presents");
+							//String newPetSymptom = input.nextLine();
+							System.out.println("Give us a brief description of what affects your pet");
+							String newPetDiagnosis = input.nextLine();
+							System.out.println("Enter the current day");
+							int newDay = Integer.parseInt(input.nextLine());
+							System.out.println("Enter the current month");
+							int newMonth = Integer.parseInt(input.nextLine());
+							System.out.println("Enter the current year");
+							int newYear = Integer.parseInt(input.nextLine());
+
+							//MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth,
+								//	newYear);
+							
+							System.out.println("Enter the option choosing of the following one of the symptoms of your pet");
+							System.out.println("One= Fever" + "\nTwo= Headache" + "\nThree= Stomach ache" + "\nFourth= Vomit");
+							String newPetSymptoms= input.nextLine();
+							if(newPetSymptoms.equalsIgnoreCase("One")) {
+								newPetSymptoms= "Fever";
+								Medicine medicineNewPet= new Medicine("Dolex", "5 ml", 10000.0);
+								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
+										newYear);
+								newMrPet.getMedicinePet().add(medicineNewPet);
+								
+								newMrPet.setThePetRecord(newPet);
+
+								MedicalHistory newMdPet = new MedicalHistory();
+								newMdPet.getMedicalRecordV().add(newMrPet);
+								newMdPet.setTheClient(newClient);
+								newMdPet.setThePet(newPet);
+
+								
+							}else if(newPetSymptoms.equalsIgnoreCase("Two")) {
+								newPetSymptoms="Headache";
+								Medicine medicineNewPet= new Medicine("Acetaminofen", "2 ml", 2000.0);
+								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
+										newYear);
+								newMrPet.getMedicinePet().add(medicineNewPet);
+								
+								newMrPet.setThePetRecord(newPet);
+
+								MedicalHistory newMdPet = new MedicalHistory();
+								newMdPet.getMedicalRecordV().add(newMrPet);
+								newMdPet.setTheClient(newClient);
+								newMdPet.setThePet(newPet);
+								
+								
+							}else if(newPetSymptoms.equalsIgnoreCase("Three")) {
+								newPetSymptoms="Stomach ache";
+								Medicine medicineNewPet= new Medicine("Ibuprofeno", "4 ml", 6000.0);
+								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
+										newYear);
+								newMrPet.getMedicinePet().add(medicineNewPet);
+								
+								newMrPet.setThePetRecord(newPet);
+
+								MedicalHistory newMdPet = new MedicalHistory();
+								newMdPet.getMedicalRecordV().add(newMrPet);
+								newMdPet.setTheClient(newClient);
+								newMdPet.setThePet(newPet);
+								
+							}else if(newPetSymptoms.equalsIgnoreCase("Fourth")) {
+								newPetSymptoms="Vomit";
+								Medicine medicineNewPet= new Medicine("Renal", "3 ml", 15000.0);
+								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
+										newYear);
+								newMrPet.getMedicinePet().add(medicineNewPet);
+
+								newMrPet.setThePetRecord(newPet);
+
+								MedicalHistory newMdPet = new MedicalHistory();
+								newMdPet.getMedicalRecordV().add(newMrPet);
+								newMdPet.setTheClient(newClient);
+								newMdPet.setThePet(newPet);
+							}
+					
+							
+//							newMrPet.setThePetRecord(newPet);
+//
+//							MedicalHistory newMdPet = new MedicalHistory();
+//							newMdPet.getMedicalRecordV().add(newMrPet);
+//							newMdPet.setTheClient(newClient);
+//							newMdPet.setThePet(newPet);
+							
+//							System.out.println("Enter the option choosing of the following one of the symptoms of your pet");
+//							System.out.println("One= Fever" + "\nTwo= Headache" + "\nThree= Stomach ache" + "\nFourth= Vomit");
+//							String newPetSymptoms= input.nextLine();
+//							if(newPetSymptoms.equalsIgnoreCase("One")) {
+//								newPetSymptoms= "Fever";
+//								Medicine medicineNewPet= new Medicine("Dolex", "5 ml", 10000.0);
+//								newMrPet.getMedicinePet().add(medicineNewPet);
+//								
+//							}else if(newPetSymptoms.equalsIgnoreCase("Two")) {
+//								newPetSymptoms="Headache";
+//								Medicine medicineNewPet= new Medicine("Acetaminofen", "2 ml", 2000.0);
+//								newMrPet.getMedicinePet().add(medicineNewPet);
+//								
+//							}else if(newPetSymptoms.equalsIgnoreCase("Three")) {
+//								newPetSymptoms="Stomach ache";
+//								Medicine medicineNewPet= new Medicine("Ibuprofeno", "4 ml", 6000.0);
+//								newMrPet.getMedicinePet().add(medicineNewPet);
+//							}else if(newPetSymptoms.equalsIgnoreCase("Fourth")) {
+//								newPetSymptoms="Vomit";
+//								Medicine medicineNewPet= new Medicine("Renal", "3 ml", 15000.0);
+//								newMrPet.getMedicinePet().add(medicineNewPet);
+//							}
+//					
+							
+							
+							System.out.println("According to the information you gave us about the pet, we are going to give the medical prescription to follow");
+							
+							
+							
+							System.out.println("The pet's medical history has been successfully created");
+						}
+
+					}else if(answer ==2) {
+						String msj= "The pet has been registered in the veterinary system";
+						System.out.println(msj);
 					}
 
 				} else {
-					System.out.println("El cliente ya se encuentra registrado");
+					System.out.println("The client is already registered in the Veterinary's System");
 				}
 			} else if (option == 3) {
 				System.out.println(myVeterinary.showInformation());
-			} 
+			} else if (option == 4) {
+				System.out.println(myVeterinary.showInformationHistorial());
+			} else if (option == 5) {
+				System.out.println("Input the pet's owner's name you want to discharge from the veterinary");
+				String ownerPetDischarge = input.nextLine();
+				System.out.println("Input the pet's name you want to discharge from veterinary");
+				String namePetDischarge = input.nextLine();
+				for (int i = 0; i < myVeterinary.getMinirooms().length; i++) {
+					
+					System.out.println(myVeterinary.getMinirooms()[i].getPetRoom().getName());
+					
+					if (myVeterinary.getMinirooms()[i].getPetRoom().getOwner().getName().equals(ownerPetDischarge)) {
+						for (int k = 0; k < myVeterinary.getMinirooms()[i].getPetRoom().getOwner().getPetClient()
+								.size(); k++) {
+							if (myVeterinary.getMinirooms()[i].getPetRoom().getOwner().getPetClient().get(k).getName()
+									.equals(namePetDischarge)) {
+
+								
+								
+								for (int j = 0; j < myVeterinary.getMinirooms()[i].getPetRoom().getHistory()
+										.getMedicalRecordV().size(); j++) {
+									myVeterinary.getMinirooms()[i].getPetRoom().getHistory().getMedicalRecordV().get(j)
+											.setStatus("Closed");
+
+								}
+								myVeterinary.getMinirooms()[i].setPetRoom(null);
+								break;
+							}
+						}
+						break;
+					}
+				}
+				System.out.println("Se ha dado de alta la mascota");
+
+			}
 			System.out.println("Desea continuar la aplicación");
-			
 		}
 	}
 
@@ -142,10 +276,10 @@ public class main {
 		md2.setThePet(pet2);
 		MedicalRecord mr2 = new MedicalRecord("Headache", "The pet has headache", 19, 3, 2019);
 		mr2.setThePetRecord(pet2);
-		md1.getMedicalRecordV().add(mr2);
+		md2.getMedicalRecordV().add(mr2);
 		myVeterinary.getClientVeterinary().add(client2);
-		client1.getPetClient().add(pet2);
-		pet1.setHistory(md2);
+		client2.getPetClient().add(pet2);
+		pet2.setHistory(md2);
 		myVeterinary.getMinirooms()[1].setPetRoom(pet2);
 
 	}
