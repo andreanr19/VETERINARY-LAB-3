@@ -141,18 +141,20 @@ public class Veterinary {
 
 		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-				//System.out.println("indice i: "+i);
-				for (int k = 0; k < minirooms[i].getPetRoom().
-						getHistory().getMedicalRecordV().size(); k++) {
-					msj += "Diagnostico: " + "The pet " + minirooms[i].getPetRoom().getName() +" tiene el siguiente historial clinico"
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis()
-							+ ", Síntoma: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom() 
-							+ "En el día: "
+
+
+				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
+					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
+							+"DIAGNOSTICO: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
+							+ "SINTOMA: "
+							
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
+							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
 							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
-							" del mes: "
+							" DEL MES: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
-							" del año: " 
+							" DEL AÑO: " 
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
 				}
 
@@ -160,5 +162,39 @@ public class Veterinary {
 		}
 		return msj;
 	}
+	
+/*	public String showInformationHistorial() {
+		String msj = "";
 
+		for (int i = 0; i < minirooms.length; i++) {
+			if (minirooms[i].getIsAviableRoom() == false) {
+
+				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
+					for(int j = 0; i< minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet().size(); j++) {
+					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
+							+"DIAGNOSTICO: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
+							+ "SINTOMA: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet()
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
+							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
+							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
+							" DEL MES: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
+							
+							"MEDICINA " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet().get(j).getName()
+							
+							+ " DEL AÑO: " 
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
+							
+							
+					}
+					}
+
+			}
+		}
+		return msj;
+	}
+	
+*/
 }

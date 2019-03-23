@@ -83,8 +83,11 @@ public class main {
 							msj += "La mascota ha sido añadida al cuarto " + (contador + 1);
 							System.out.println(msj);
 
-							//System.out.println("Tell us the symptom the pets presents");
-							//String newPetSymptom = input.nextLine();
+							System.out.println("Tell us the symptom the pets presents");
+							String newPetSymptom = input.nextLine();
+							
+							
+							
 							System.out.println("Give us a brief description of what affects your pet");
 							String newPetDiagnosis = input.nextLine();
 							System.out.println("Enter the current day");
@@ -94,78 +97,19 @@ public class main {
 							System.out.println("Enter the current year");
 							int newYear = Integer.parseInt(input.nextLine());
 
-							//MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth,
-								//	newYear);
+							MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth,
+									newYear);
 							
-							System.out.println("Enter the option choosing of the following one of the symptoms of your pet");
-							System.out.println("One= Fever" + "\nTwo= Headache" + "\nThree= Stomach ache" + "\nFourth= Vomit");
-							String newPetSymptoms= input.nextLine();
-							if(newPetSymptoms.equalsIgnoreCase("One")) {
-								newPetSymptoms= "Fever";
-								Medicine medicineNewPet= new Medicine("Dolex", "5 ml", 10000.0);
-								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
-										newYear);
-								newMrPet.getMedicinePet().add(medicineNewPet);
-								
-								newMrPet.setThePetRecord(newPet);
-
-								MedicalHistory newMdPet = new MedicalHistory();
-								newMdPet.getMedicalRecordV().add(newMrPet);
-								newMdPet.setTheClient(newClient);
-								newMdPet.setThePet(newPet);
-
-								
-							}else if(newPetSymptoms.equalsIgnoreCase("Two")) {
-								newPetSymptoms="Headache";
-								Medicine medicineNewPet= new Medicine("Acetaminofen", "2 ml", 2000.0);
-								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
-										newYear);
-								newMrPet.getMedicinePet().add(medicineNewPet);
-								
-								newMrPet.setThePetRecord(newPet);
-
-								MedicalHistory newMdPet = new MedicalHistory();
-								newMdPet.getMedicalRecordV().add(newMrPet);
-								newMdPet.setTheClient(newClient);
-								newMdPet.setThePet(newPet);
-								
-								
-							}else if(newPetSymptoms.equalsIgnoreCase("Three")) {
-								newPetSymptoms="Stomach ache";
-								Medicine medicineNewPet= new Medicine("Ibuprofeno", "4 ml", 6000.0);
-								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
-										newYear);
-								newMrPet.getMedicinePet().add(medicineNewPet);
-								
-								newMrPet.setThePetRecord(newPet);
-
-								MedicalHistory newMdPet = new MedicalHistory();
-								newMdPet.getMedicalRecordV().add(newMrPet);
-								newMdPet.setTheClient(newClient);
-								newMdPet.setThePet(newPet);
-								
-							}else if(newPetSymptoms.equalsIgnoreCase("Fourth")) {
-								newPetSymptoms="Vomit";
-								Medicine medicineNewPet= new Medicine("Renal", "3 ml", 15000.0);
-								MedicalRecord newMrPet = new MedicalRecord(newPetSymptoms, newPetDiagnosis, newDay, newMonth,
-										newYear);
-								newMrPet.getMedicinePet().add(medicineNewPet);
-
-								newMrPet.setThePetRecord(newPet);
-
-								MedicalHistory newMdPet = new MedicalHistory();
-								newMdPet.getMedicalRecordV().add(newMrPet);
-								newMdPet.setTheClient(newClient);
-								newMdPet.setThePet(newPet);
-							}
-					
 							
-//							newMrPet.setThePetRecord(newPet);
-//
-//							MedicalHistory newMdPet = new MedicalHistory();
-//							newMdPet.getMedicalRecordV().add(newMrPet);
-//							newMdPet.setTheClient(newClient);
-//							newMdPet.setThePet(newPet);
+							
+							newMrPet.setThePetRecord(newPet);
+
+							MedicalHistory newMdPet = new MedicalHistory();
+							newMdPet.getMedicalRecordV().add(newMrPet);
+							newMdPet.setTheClient(newClient);
+							newMdPet.setThePet(newPet);
+
+							newPet.setHistory(newMdPet);
 							
 //							System.out.println("Enter the option choosing of the following one of the symptoms of your pet");
 //							System.out.println("One= Fever" + "\nTwo= Headache" + "\nThree= Stomach ache" + "\nFourth= Vomit");
@@ -192,7 +136,7 @@ public class main {
 //					
 							
 							
-							System.out.println("According to the information you gave us about the pet, we are going to give the medical prescription to follow");
+							//System.out.println("According to the information you gave us about the pet, we are going to give the medical prescription to follow");
 							
 							
 							
