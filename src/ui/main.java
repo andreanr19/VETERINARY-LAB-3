@@ -15,12 +15,13 @@ public class main {
 
 			System.out.println("WELCOME TO THE VETERINARY! WHAT WOULD YOU LIKE TO DO?");
 			String options = "1.To know Veterinary's information " + "\n2.To register a new client and a new pet"
-					+ "\n3.To look for the current pets in the rooms"
-					+ "\n4.To look for the historial clinical of the pet "
-					+ "\n5.To discharge from the veterinary a pet "
-					+ "\n6.To create a report of the open medical history "
-					+ "\n7.To calculate the cost of a hospitalization "
-					+ "\n8.To know the income based on hospitalizations " + "\n9.To know a Pet's Room";
+					+ "\n3.Mostrar las salas actualmente disponibles"
+					+ "\n4.To look for the current pets in the rooms"
+					+ "\n5.To look for the historial clinical of the pet "
+					+ "\n6.To discharge from the veterinary a pet "
+					+ "\n7.To create a report of the open medical history "
+					+ "\n8.To calculate the cost of a hospitalization "
+					+ "\n9.To know the income based on hospitalizations " + "\n9.To know a Pet's Room";
 			System.out.println(options);
 			int option = Integer.parseInt(input.nextLine());
 			if (option == 1) {
@@ -96,9 +97,15 @@ public class main {
 							int newMonth = Integer.parseInt(input.nextLine());
 							System.out.println("Enter the current year");
 							int newYear = Integer.parseInt(input.nextLine());
+							System.out.println("Ingrese la día de alta de la mascota");
+							int newDayOut = Integer.parseInt(input.nextLine());
+							System.out.println("Ingrese el mes de alta de la mascota");
+							int newMonthOut = Integer.parseInt(input.nextLine());
+							System.out.println("Ingrese el año de alta de la mascota");
+							int newYearOut = Integer.parseInt(input.nextLine());
 
 							MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth,
-									newYear);
+									newYear, newDayOut, newMonthOut, newYearOut);
 							
 							
 							
@@ -111,32 +118,17 @@ public class main {
 
 							newPet.setHistory(newMdPet);
 							
-//							System.out.println("Enter the option choosing of the following one of the symptoms of your pet");
-//							System.out.println("One= Fever" + "\nTwo= Headache" + "\nThree= Stomach ache" + "\nFourth= Vomit");
-//							String newPetSymptoms= input.nextLine();
-//							if(newPetSymptoms.equalsIgnoreCase("One")) {
-//								newPetSymptoms= "Fever";
-//								Medicine medicineNewPet= new Medicine("Dolex", "5 ml", 10000.0);
-//								newMrPet.getMedicinePet().add(medicineNewPet);
-//								
-//							}else if(newPetSymptoms.equalsIgnoreCase("Two")) {
-//								newPetSymptoms="Headache";
-//								Medicine medicineNewPet= new Medicine("Acetaminofen", "2 ml", 2000.0);
-//								newMrPet.getMedicinePet().add(medicineNewPet);
-//								
-//							}else if(newPetSymptoms.equalsIgnoreCase("Three")) {
-//								newPetSymptoms="Stomach ache";
-//								Medicine medicineNewPet= new Medicine("Ibuprofeno", "4 ml", 6000.0);
-//								newMrPet.getMedicinePet().add(medicineNewPet);
-//							}else if(newPetSymptoms.equalsIgnoreCase("Fourth")) {
-//								newPetSymptoms="Vomit";
-//								Medicine medicineNewPet= new Medicine("Renal", "3 ml", 15000.0);
-//								newMrPet.getMedicinePet().add(medicineNewPet);
-//							}
-//					
+							System.out.println("Ingresa la medicina para esta mascota");
+							String nameNewMedicinePet= input.nextLine();
+							System.out.println("Ingresa la dosis de medicina para esta mascota");
+							String doseNewMedicinePet= input.nextLine();
+							System.out.println("Ingresa el precio de la medicina");
+							double priceNewMedicinePet= Double.parseDouble(input.nextLine());
 							
+							Medicine newMedicineNewPet = new Medicine(nameNewMedicinePet, doseNewMedicinePet, priceNewMedicinePet);
+							newMrPet.getMedicinePet().add(newMedicineNewPet);
 							
-							//System.out.println("According to the information you gave us about the pet, we are going to give the medical prescription to follow");
+
 							
 							
 							
@@ -151,11 +143,13 @@ public class main {
 				} else {
 					System.out.println("The client is already registered in the Veterinary's System");
 				}
-			} else if (option == 3) {
-				System.out.println(myVeterinary.showInformation());
+			} else if (option ==3) {
+				System.out.println(myVeterinary.ShowRoomsAvaliables());
 			} else if (option == 4) {
-				System.out.println(myVeterinary.showInformationHistorial());
+				System.out.println(myVeterinary.showInformation());
 			} else if (option == 5) {
+				System.out.println(myVeterinary.showInformationHistorial());
+			} else if (option == 6) {
 				System.out.println("Input the pet's owner's name you want to discharge from the veterinary");
 				String ownerPetDischarge = input.nextLine();
 				System.out.println("Input the pet's name you want to discharge from veterinary");
@@ -179,14 +173,18 @@ public class main {
 
 								}
 								myVeterinary.getMinirooms()[i].setPetRoom(null);
-								break;
+								break; 	// termina el ciclo automaticamente apenas encuentre la mascota
 							}
 						}
-						break;
+						break;	//se sale del todo
 					}
 				}
 				System.out.println("Se ha dado de alta la mascota");
 
+			}else if(option==7) {
+				System.out.println(myVeterinary.calculateCostOfHospitalization());
+			}else if(option==8) {
+				System.out.println(myVeterinary.calculateEarnings());
 			}
 			System.out.println("Desea continuar la aplicación");
 		}
@@ -199,7 +197,7 @@ public class main {
 		MedicalHistory md1 = new MedicalHistory();
 		md1.setTheClient(client1);
 		md1.setThePet(pet1);
-		MedicalRecord mr1 = new MedicalRecord("GripaFlu", "The pet has flu", 20, 3, 2019);
+		MedicalRecord mr1 = new MedicalRecord("GripaFlu", "The pet has flu", 20, 3, 2019, 6, 4, 2019);
 		mr1.setThePetRecord(pet1);
 		// mr1 meterlo en el medical history
 		md1.getMedicalRecordV().add(mr1);
@@ -214,11 +212,13 @@ public class main {
 		myVeterinary.getMinirooms()[0].setPetRoom(pet1);
 
 		Client client2 = new Client("Jesse", 970220, "Kra 3 #2_20", 267554);
-		Pet pet2 = new Pet("Pablo", 2, 3.0, 'G');
+		Pet pet2 = new Pet("Pablo", 2, 3.0, 'C');
 		MedicalHistory md2 = new MedicalHistory();
 		md2.setTheClient(client2);
 		md2.setThePet(pet2);
-		MedicalRecord mr2 = new MedicalRecord("Headache", "The pet has headache", 19, 3, 2019);
+		MedicalRecord mr2 = new MedicalRecord("Headache", "The pet has headache", 19, 2, 2019, 20, 4, 2019);
+		Medicine medicinePet2 = new Medicine("Acetaminofen", "5 ml", 4000);
+		mr2.getMedicinePet().add(medicinePet2);
 		mr2.setThePetRecord(pet2);
 		md2.getMedicalRecordV().add(mr2);
 		myVeterinary.getClientVeterinary().add(client2);

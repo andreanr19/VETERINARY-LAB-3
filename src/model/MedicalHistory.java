@@ -69,10 +69,5 @@ public class MedicalHistory {
 		this.medicalRecordV = medicalRecordV;
 	}
 	
-//	public String showMedicalRecordInformation() {
-//		String msj = "";
-//		for(int i =0; i<medicalRecordV.size(); i++) {
-//			if(medicalRecordV(i))
-//		}
-//	}
+
 }

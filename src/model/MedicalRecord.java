@@ -17,13 +17,17 @@ public class MedicalRecord {
 	private int day;
 	private int month;
 	private int year;
+	private int dayOut;
+	private int monthOut;
+	private int yearOut;
+	private int toDays;
 	
 	//RELACIONES
 	
 	private ArrayList<Medicine> medicinePet; //medicinas que ha recibido la mascota
 	private Pet thePetRecord;
 	//CONSTRUCTOR
-	public MedicalRecord(String symptom, String diagnosis, int day, int month, int year) {
+	public MedicalRecord(String symptom, String diagnosis, int day, int month, int year, int dayOut, int monthOut, int yearOut) {
 		
 		
 		
@@ -33,8 +37,36 @@ public class MedicalRecord {
 		this.day=day;
 		this.month=month;
 		this.year=year;
+		this.dayOut=dayOut;
+		this.monthOut=monthOut;
+		this.yearOut=yearOut;
+		
 		
 		medicinePet= new ArrayList<Medicine>();
+	}
+
+	public int getDayOut() {
+		return dayOut;
+	}
+
+	public void setDayOut(int dayOut) {
+		this.dayOut = dayOut;
+	}
+
+	public int getMonthOut() {
+		return monthOut;
+	}
+
+	public void setMonthOut(int monthOut) {
+		this.monthOut = monthOut;
+	}
+
+	public int getYearOut() {
+		return yearOut;
+	}
+
+	public void setYearOut(int yearOut) {
+		this.yearOut = yearOut;
 	}
 
 	public int getDay() {
@@ -117,8 +149,26 @@ public class MedicalRecord {
 		this.thePetRecord = thePetRecord;
 	}
 	
+	public int toDays(int days, int months, int years) {
+		return (years-1)*360 + (months-1)*30 + days;
+	}
 	
+	public int getTotalDays() {
+		int totalDays=0;
+		
+		totalDays= toDays(dayOut, monthOut, yearOut)- toDays(day, month, year);
+		
+		return totalDays;
+	}
 	
+	public double priceMedicineTotal() {
+		double totalPriceM=0;
+		
+		for(int i=0; i<medicinePet.size();i++) {
+			totalPriceM+=medicinePet.get(i).getPrice();
+		}
+		return totalPriceM;
+	}
 	
 	
 	

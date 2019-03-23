@@ -130,71 +130,174 @@ public class Veterinary {
 						+ minirooms[i].getPetRoom().getName();
 
 			} else {
-				msj += "\n El cuarto " + minirooms[i].getnumRoom() + "no tiene mascota";
+				msj += "\n El cuarto " + minirooms[i].getnumRoom() + " no tiene mascota";
 			}
 		}
 		return msj;
 	}
+
+//	public String showInformationHistorial() {
+//		String msj = "";
+//
+//		for (int i = 0; i < minirooms.length; i++) {
+//			if (minirooms[i].getIsAviableRoom() == false) {
+//
+//
+//				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
+//					
+//					
+//					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
+//							+"DIAGNOSTICO: "
+//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
+//							+ "SINTOMA: "
+//							
+//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
+//							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
+//							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
+//							" DEL MES: "
+//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
+//							" DEL AÑO: " 
+//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
+//				}
+//
+//			}
+//		}
+//		return msj;
+//	}
 
 	public String showInformationHistorial() {
 		String msj = "";
 
 		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-
+				msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() + " TIENE EL SIGUIENTE HISTORIAL CLINICO\n"
+						+ "DIAGNOSTICO: ";
 
 				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
-					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
-							+"DIAGNOSTICO: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
+					msj += minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
 							+ "SINTOMA: "
-							
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
-							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
-							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
-							" DEL MES: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
-							" DEL AÑO: " 
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
+//					+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet()
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom() + "\n"
+							+ "LA FECHA DE INGRESO DE LA MASCOTA FUE EL DIA: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + " DEL MES: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth()
+							+ " DEL AÑO: " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear()
+							+ "\n" + "LA FECHA DE ALTA DE LA MASCOTA ES EL DIA: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDayOut()
+							+ " DEL MES: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonthOut()
+							+ " DEL AÑO: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYearOut() + "\n";
+
+					for (int j = 0; j < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k)
+							.getMedicinePet().size(); j++) {
+						msj += "MEDICINA " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k)
+								.getMedicinePet().get(j).getName() + "\n";
+
+					}
 				}
 
 			}
 		}
 		return msj;
 	}
-	
-/*	public String showInformationHistorial() {
+
+	public String ShowRoomsAvaliables() {
 		String msj = "";
+		int contador = 0;
+		msj += "Los cuartos disponibles son: \n";
 
 		for (int i = 0; i < minirooms.length; i++) {
+
+			if (minirooms[i].getIsAviableRoom() == true) {
+
+				msj += "El cuarto numero " + minirooms[i].getnumRoom() + "\n";
+				contador++;
+			}
+
+		}
+		if (contador == 0) {
+			msj = "No hay salas disponibles";
+		}
+
+		return msj;
+	}
+
+	public double costHospitalization(double weigthPet, char typePet, int totalDaysPet, double priceMedicine) {
+		double costTotal = priceMedicine; // se inicializa en priceMedicine que es lo minimo que va a costar la
+											// hospitalizacion desde el inicio
+
+		if (weigthPet >= 1 && weigthPet <= 3) {
+			if (typePet == 'C' || typePet == 'B' || typePet == 'O') {
+				costTotal += 10000 * totalDaysPet;
+			} else if (typePet == 'D') {
+				costTotal += 15000 * totalDaysPet;
+			}
+
+		} else if (weigthPet > 3 && weigthPet <= 10) {
+			if (typePet == 'C') {
+				costTotal += 12000 * totalDaysPet;
+			} else if (typePet == 'D') {
+				costTotal += 17000 * totalDaysPet;
+			} else if (typePet == 'B') {
+				costTotal += 12000 * totalDaysPet;
+			} else if (typePet == 'O') {
+				costTotal += 17000 * totalDaysPet;
+			}
+		} else if (weigthPet > 10 && weigthPet <= 20) {
+			if (typePet == 'C') {
+				costTotal += 15000 * totalDaysPet;
+			} else if (typePet == 'D') {
+				costTotal += 20000 * totalDaysPet;
+			} else if (typePet == 'B') {
+				costTotal += 20000 * totalDaysPet;
+			} else if (typePet == 'O') {
+				costTotal += 30000 * totalDaysPet;
+			}
+		} else if (weigthPet > 20) {
+			if (typePet == 'C') {
+				costTotal += 20000 * totalDaysPet;
+			} else if (typePet == 'D') {
+				costTotal += 25000 * totalDaysPet;
+			} else if (typePet == 'B') {
+				costTotal += 25000 * totalDaysPet;
+			} else if (typePet == 'O') {
+				costTotal += 30000 * totalDaysPet;
+			}
+		}
+		return costTotal;
+	}
+
+	public String calculateCostOfHospitalization() {
+
+		String msj = "";
+		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-
-				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
-					for(int j = 0; i< minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet().size(); j++) {
-					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
-							+"DIAGNOSTICO: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
-							+ "SINTOMA: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet()
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
-							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
-							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
-							" DEL MES: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
-							
-							"MEDICINA " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet().get(j).getName()
-							
-							+ " DEL AÑO: " 
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
-							
-							
-					}
-					}
-
+				msj += "La mascota " + minirooms[i].getPetRoom().getName() + " tiene un costo de hospitalizacion de "
+						+ costHospitalization(minirooms[i].getPetRoom().getWeigth(),
+								minirooms[i].getPetRoom().getAnimalType(),
+								minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).getTotalDays(),
+								minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).priceMedicineTotal())
+						+ "\n";
 			}
 		}
 		return msj;
+
 	}
-	
-*/
+
+	public String calculateEarnings() {
+		String msj = "";
+		double accumulateTotalCost = 0;
+		for (int i = 0; i < minirooms.length; i++) {
+			if (minirooms[i].getIsAviableRoom() == false) {
+				accumulateTotalCost += costHospitalization(minirooms[i].getPetRoom().getWeigth(),
+						minirooms[i].getPetRoom().getAnimalType(),
+						minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).getTotalDays(),
+						minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).priceMedicineTotal());
+			}
+		}
+		msj += "Los ingresos por concepto de hospitalizaciones son " + accumulateTotalCost;
+		return msj;
+
+	}
 }
