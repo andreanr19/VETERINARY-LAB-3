@@ -126,72 +126,43 @@ public class Veterinary {
 
 		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-				msj += "\n La mascota que está actualmente en el cuarto " + minirooms[i].getnumRoom() + " es "
+				msj += "\n The pet that is actually in the room " + minirooms[i].getnumRoom() + " is "
 						+ minirooms[i].getPetRoom().getName();
 
 			} else {
-				msj += "\n El cuarto " + minirooms[i].getnumRoom() + " no tiene mascota";
+				msj += "\n The room " + minirooms[i].getnumRoom() + " doesn't have any pet";
 			}
 		}
 		return msj;
 	}
 
-//	public String showInformationHistorial() {
-//		String msj = "";
-//
-//		for (int i = 0; i < minirooms.length; i++) {
-//			if (minirooms[i].getIsAviableRoom() == false) {
-//
-//
-//				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
-//					
-//					
-//					msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() +" TIENE EL SIGUIENTE HISTORIAL CLINICO\n" 
-//							+"DIAGNOSTICO: "
-//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
-//							+ "SINTOMA: "
-//							
-//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom()  + "\n"
-//							+ "LA HISTORIA CLINICA DE LA MASCOTA FUE EL DIA: "
-//							+minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + 
-//							" DEL MES: "
-//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth() + 
-//							" DEL AÑO: " 
-//							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear() + "\n";
-//				}
-//
-//			}
-//		}
-//		return msj;
-//	}
 
 	public String showInformationHistorial() {
 		String msj = "";
 
 		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-				msj += "LA MASCOTA " + minirooms[i].getPetRoom().getName() + " TIENE EL SIGUIENTE HISTORIAL CLINICO\n"
-						+ "DIAGNOSTICO: ";
+				msj += "THE PET " + minirooms[i].getPetRoom().getName() + " HAS THE FOLLOWING MEDICAL HISTORY\n"
+						+ "DIAGNOSIS: ";
 
 				for (int k = 0; k < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().size(); k++) {
 					msj += minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDiagnosis() + "\n"
-							+ "SINTOMA: "
-//					+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMedicinePet()
+							+ "SYMPTOM: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getSymptom() + "\n"
-							+ "LA FECHA DE INGRESO DE LA MASCOTA FUE EL DIA: "
-							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + " DEL MES: "
+							+ "THE DAY OF INCOME IF THE PET WAS: "
+							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDay() + " OF THE MONTH: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonth()
-							+ " DEL AÑO: " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear()
-							+ "\n" + "LA FECHA DE ALTA DE LA MASCOTA ES EL DIA: "
+							+ " OF THE YEAR: " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYear()
+							+ "\n" + "THE DATE OF OUTCOME OF THE PET IS THE DAY: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getDayOut()
-							+ " DEL MES: "
+							+ " OF THE MONTH: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getMonthOut()
-							+ " DEL AÑO: "
+							+ " OF THE MONTH: "
 							+ minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k).getYearOut() + "\n";
 
 					for (int j = 0; j < minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k)
 							.getMedicinePet().size(); j++) {
-						msj += "MEDICINA " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k)
+						msj += "THE MEDICINE THAT THE PET RECEIVED WAS " + minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(k)
 								.getMedicinePet().get(j).getName() + "\n";
 
 					}
@@ -205,19 +176,19 @@ public class Veterinary {
 	public String ShowRoomsAvaliables() {
 		String msj = "";
 		int contador = 0;
-		msj += "Los cuartos disponibles son: \n";
+		msj += "The available rooms are: \n";
 
 		for (int i = 0; i < minirooms.length; i++) {
 
 			if (minirooms[i].getIsAviableRoom() == true) {
 
-				msj += "El cuarto numero " + minirooms[i].getnumRoom() + "\n";
+				msj += "the room number " + minirooms[i].getnumRoom() + "\n";
 				contador++;
 			}
 
 		}
 		if (contador == 0) {
-			msj = "No hay salas disponibles";
+			msj = "There's no available rooms";
 		}
 
 		return msj;
@@ -273,7 +244,7 @@ public class Veterinary {
 		String msj = "";
 		for (int i = 0; i < minirooms.length; i++) {
 			if (minirooms[i].getIsAviableRoom() == false) {
-				msj += "La mascota " + minirooms[i].getPetRoom().getName() + " tiene un costo de hospitalizacion de "
+				msj += "The pet " + minirooms[i].getPetRoom().getName() + " has a cost of hospitalization of "
 						+ costHospitalization(minirooms[i].getPetRoom().getWeigth(),
 								minirooms[i].getPetRoom().getAnimalType(),
 								minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).getTotalDays(),
@@ -296,7 +267,7 @@ public class Veterinary {
 						minirooms[i].getPetRoom().getHistory().getMedicalRecordV().get(0).priceMedicineTotal());
 			}
 		}
-		msj += "Los ingresos por concepto de hospitalizaciones son " + accumulateTotalCost;
+		msj += "The earnings from hospitalizations are " + accumulateTotalCost;
 		return msj;
 
 	}

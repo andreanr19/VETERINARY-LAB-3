@@ -10,59 +10,60 @@ public class main {
 		Veterinary myVeterinary = new Veterinary("Mi Pequeña Mascota", "kra_4 #15-77", "2670039", "1010138801");
 		InitializeAll(myVeterinary);
 		Scanner input = new Scanner(System.in);
-		System.out.println("Desea comenzar la aplicacion");
-		while (input.nextLine().equalsIgnoreCase("SI")) {
+		System.out.println("would you like to start? say yes");
+		while (input.nextLine().equalsIgnoreCase("yes")) {
 
-			System.out.println("WELCOME TO THE VETERINARY! WHAT WOULD YOU LIKE TO DO?");
-			String options = "1.To know Veterinary's information " + "\n2.To register a new client and a new pet"
-					+ "\n3.Mostrar las salas actualmente disponibles"
+			System.out.println("WELCOME TO THE VETERINARY. WHAT WOULD YOU LIKE TO DO?");
+			String options = "1.To know the veterinary's information " 
+					+ "\n2.To register a client and a pet "
+					+ "\n3.To show the rooms actually availables"
 					+ "\n4.To look for the current pets in the rooms"
-					+ "\n5.To look for the historial clinical of the pet "
+					+ "\n5.To look for the historial clinical of a pet "
 					+ "\n6.To discharge from the veterinary a pet "
-					+ "\n7.To create a report of the open medical history "
-					+ "\n8.To calculate the cost of a hospitalization "
-					+ "\n9.To know the income based on hospitalizations " + "\n9.To know a Pet's Room";
+					+ "\n7.To calculate the cost of hospitalization of a pet "
+					+ "\n8.To know the income based on hospitalizations";
+					
 			System.out.println(options);
 			int option = Integer.parseInt(input.nextLine());
 			if (option == 1) {
 				System.out.println(myVeterinary.toString());
 			} else if (option == 2) {
-				System.out.println("Ingrese su Id");
+				System.out.println("Enter your ID");
 				int idNewClient = Integer.parseInt(input.nextLine());
 				if (myVeterinary.verifyClientExistance(idNewClient) == false) {
 
 					System.out.println(
-							"Hemos encontrado que usted no está registrado, por lo tanto te vamos a registrar");
+							"This client isn't registered yet. To register, enter the following information");
 
-					System.out.println("Ingrese su nombre");
+					System.out.println("Enter the client's name");
 					String nameNewClient = input.nextLine();
-					System.out.println("Ingrese su Id");
+					System.out.println("Enter the client's ID");
 					idNewClient = Integer.parseInt(input.nextLine());
-					System.out.println("Ingrese su direccion");
+					System.out.println("Enter the client's address");
 					String addressNewClient = input.nextLine();
-					System.out.println("Ingrese su telefono");
+					System.out.println("Enter the client's phone");
 					int phoneNewClient = Integer.parseInt(input.nextLine());
 
 					Client newClient = new Client(nameNewClient, idNewClient, addressNewClient, phoneNewClient);
 					myVeterinary.getClientVeterinary().add(newClient);
 
-					System.out.println("El cliente ha sido registrado");
+					System.out.println("The client has been registered");
 
-					System.out.println("Ahora danos los datos de la mascota que vas a registrar");
-					System.out.println("Danos el nombre de tu mascota");
+					System.out.println("Now register the information's of the pet's client");
+					System.out.println("Enter the name of the client's pet");
 					String nameNewPet = input.nextLine();
-					System.out.println("Danos la edad de tu mascota");
+					System.out.println("Enter the age of the client's pet");
 					int ageNewPet = Integer.parseInt(input.nextLine());
-					System.out.println("Ingrese el peso de su mascota");
+					System.out.println("Enter the weigth of the client's pet");
 					int weigthNewPet = Integer.parseInt(input.nextLine());
 					System.out.println(
-							"Ingrese D si su mascota es un perro, G si su mascota es un gato, B si su mascota es un pajaro u O si es cualquier otro tipo");
+							"Enter D if the pet is a dog, C if the pet is a cat, B if the pet is a Bird, enter O if is other");
 					char typeNewPet = input.nextLine().charAt(0);
 
 					Pet newPet = new Pet(nameNewPet, ageNewPet, weigthNewPet, typeNewPet);
 					newClient.getPetClient().add(newPet);
 
-					System.out.println("Desea hospitalizar la manscota \n1.Si \n2.No");
+					System.out.println("Is the pet gonna be hospitalize? \n1.Yes \n2.No");
 					int answer = Integer.parseInt(input.nextLine());
 					if (answer == 1) {
 						int contador = 0;
@@ -78,18 +79,18 @@ public class main {
 						}
 						String msj = "";
 						if (contador == myVeterinary.getMinirooms().length) {
-							msj += "No hay cuartos disponibles";
+							msj += "There's no rooms available";
 							System.out.println(msj);
 						} else {
-							msj += "La mascota ha sido añadida al cuarto " + (contador + 1);
+							msj += "The pet has been added to the room " + (contador + 1);
 							System.out.println(msj);
 
-							System.out.println("Tell us the symptom the pets presents");
+							System.out.println("Enter the symptom the pets presents");
 							String newPetSymptom = input.nextLine();
 							
 							
 							
-							System.out.println("Give us a brief description of what affects your pet");
+							System.out.println("Enter a brief description of what affects the pet");
 							String newPetDiagnosis = input.nextLine();
 							System.out.println("Enter the current day");
 							int newDay = Integer.parseInt(input.nextLine());
@@ -97,11 +98,11 @@ public class main {
 							int newMonth = Integer.parseInt(input.nextLine());
 							System.out.println("Enter the current year");
 							int newYear = Integer.parseInt(input.nextLine());
-							System.out.println("Ingrese la día de alta de la mascota");
+							System.out.println("Enter the day the pet is gonna be discharged");
 							int newDayOut = Integer.parseInt(input.nextLine());
-							System.out.println("Ingrese el mes de alta de la mascota");
+							System.out.println("Enter the month the pet is gonna be discharged");
 							int newMonthOut = Integer.parseInt(input.nextLine());
-							System.out.println("Ingrese el año de alta de la mascota");
+							System.out.println("Enter the year the pet is gonna be discharged");
 							int newYearOut = Integer.parseInt(input.nextLine());
 
 							MedicalRecord newMrPet = new MedicalRecord(newPetSymptom, newPetDiagnosis, newDay, newMonth,
@@ -118,11 +119,11 @@ public class main {
 
 							newPet.setHistory(newMdPet);
 							
-							System.out.println("Ingresa la medicina para esta mascota");
+							System.out.println("Enter the medicine for the pet");
 							String nameNewMedicinePet= input.nextLine();
-							System.out.println("Ingresa la dosis de medicina para esta mascota");
+							System.out.println("Enter the dose of medicine for the pet");
 							String doseNewMedicinePet= input.nextLine();
-							System.out.println("Ingresa el precio de la medicina");
+							System.out.println("Enter the medicine price");
 							double priceNewMedicinePet= Double.parseDouble(input.nextLine());
 							
 							Medicine newMedicineNewPet = new Medicine(nameNewMedicinePet, doseNewMedicinePet, priceNewMedicinePet);
@@ -156,7 +157,7 @@ public class main {
 				String namePetDischarge = input.nextLine();
 				for (int i = 0; i < myVeterinary.getMinirooms().length; i++) {
 					
-					System.out.println(myVeterinary.getMinirooms()[i].getPetRoom().getName());
+					//System.out.println(myVeterinary.getMinirooms()[i].getPetRoom().getName());
 					
 					if (myVeterinary.getMinirooms()[i].getPetRoom().getOwner().getName().equals(ownerPetDischarge)) {
 						for (int k = 0; k < myVeterinary.getMinirooms()[i].getPetRoom().getOwner().getPetClient()
@@ -179,14 +180,14 @@ public class main {
 						break;	//se sale del todo
 					}
 				}
-				System.out.println("Se ha dado de alta la mascota");
+				System.out.println("The pet has been discharged");
 
 			}else if(option==7) {
 				System.out.println(myVeterinary.calculateCostOfHospitalization());
 			}else if(option==8) {
 				System.out.println(myVeterinary.calculateEarnings());
 			}
-			System.out.println("Desea continuar la aplicación");
+			System.out.println("WOULD YOU LIKE TO CONTINUE THE APP? SAY YES");
 		}
 	}
 
