@@ -36,7 +36,7 @@ public class Room {
 	 * Description The method allows to set availability of a room
 	 * pre: the Pet shouldn't be null and it was created before
 	 * post: the availability of the room is set by parameter
-	 * @param pet
+	 * @param pet To know if the pet is in the room
 	 */
 	public void setIsAviableRoom(boolean pet) {
 		this.isAviableRoom = pet;
@@ -46,7 +46,7 @@ public class Room {
 	 * Description The method allows to obtain the number of a room. 
 	 * pre:Existence of an attribute called numRoom
 	 * 
-	 * @return:A String representing the number of the room
+	 * @return A String representing the number of the room
 	 */
 	public String getnumRoom() {
 		return numRoom;
@@ -57,7 +57,7 @@ public class Room {
 	 * pre:Existence of an attribute called numRoom
 	 * post: the number of the room is set by parameter 
 	 * 
-	 * @param numRoom
+	 * @param numRoom the number of the room
 	 */
 	public void setnumRoom(String numRoom) {
 		this.numRoom = numRoom;
@@ -78,7 +78,7 @@ public class Room {
 	 * pre: The availability of the room depends if the pet is null, so the room is empty
 	 * and when it's true, the room is with a pet
 	 * post: the pet that is in the room is set by parameter
-	 * @param petRoom
+	 * @param petRoom the pet of the room 
 	 */
 	public void setPetRoom(Pet petRoom) {
 		if (petRoom != null) {

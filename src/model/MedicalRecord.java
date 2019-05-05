@@ -49,7 +49,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the day when the pet will be out from the veterinary. 
 	 * pre:Existence of an attribute called dayOut
 	 * 
-	 * @return:An integer representing the day of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the day of the pet when it'll be discharge from veterinary
 	 */
 	public int getDayOut() {
 		return dayOut;
@@ -59,7 +59,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the day when the pet will be discharge from veterinary
 	 * pre: Existence of an attribute called dayOut
 	 * post: the day when the pet will be discharge from veterinary has been set
-	 * @param dayOut
+	 * @param dayOut final day of the pet in the vet.
 	 */
 	public void setDayOut(int dayOut) {
 		this.dayOut = dayOut;
@@ -69,7 +69,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the month when the pet will be out from the veterinary. 
 	 * pre:Existence of an attribute called monthOut
 	 * 
-	 * @return:An integer representing the month of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the month of the pet when it'll be discharge from veterinary
 	 */
 	public int getMonthOut() {
 		return monthOut;
@@ -79,7 +79,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the month when the pet will be discharge from veterinary
 	 * pre: Existence of an attribute called monthOut
 	 * post: the month when the pet will be discharge from veterinary has been set
-	 * @param monthOut
+	 * @param monthOut final month of the pet in the vet.
 	 */
 	public void setMonthOut(int monthOut) {
 		this.monthOut = monthOut;
@@ -89,7 +89,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the year when the pet will be out from the veterinary. 
 	 * pre:Existence of an attribute called yearOut
 	 * 
-	 * @return:An integer representing the year of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the year of the pet when it'll be discharge from veterinary
 	 */
 	public int getYearOut() {
 		return yearOut;
@@ -99,7 +99,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the year when the pet will be discharge from veterinary
 	 * pre: Existence of an attribute called yearOut
 	 * post: the year when the pet will be discharge from veterinary has been set
-	 * @param yearOut
+	 * @param yearOut final year of the pet in the vet.
 	 */
 	public void setYearOut(int yearOut) {
 		this.yearOut = yearOut;
@@ -109,7 +109,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the day when the pet got in to the veterinary. 
 	 * pre:Existence of an attribute called day
 	 * 
-	 * @return:An integer representing the day of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the day of the pet when it'll be discharge from veterinary
 	 */
 	public int getDay() {
 		return day;
@@ -119,7 +119,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the day when the pet got in to the veterinary
 	 * pre: Existence of an attribute called day
 	 * post: the day when the pet got in to the veterinary has been set
-	 * @param day
+	 * @param day first day of the pet in the vet.
 	 */
 	public void setDay(int day) {
 		this.day = day;
@@ -129,7 +129,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the month when the pet got in to the veterinary. 
 	 * pre:Existence of an attribute called day
 	 * 
-	 * @return:An integer representing the day of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the day of the pet when it'll be discharge from veterinary
 	 */
 	public int getMonth() {
 		return month;
@@ -139,7 +139,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the month when the pet got in to the veterinary
 	 * pre: Existence of an attribute called month
 	 * post: the month when the pet got in to the veterinary has been set
-	 * @param month
+	 * @param month first month of the pet in the vet.
 	 */
 	public void setMonth(int month) {
 		this.month = month;
@@ -149,7 +149,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the year when the pet got in to the veterinary. 
 	 * pre:Existence of an attribute called year
 	 * 
-	 * @return:An integer representing the year of the pet when it'll be discharge from veterinary
+	 * @return An integer representing the year of the pet when it'll be discharge from veterinary
 	 */
 	public int getYear() {
 		return year;
@@ -159,7 +159,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the year when the pet got in to the veterinary
 	 * pre: Existence of an attribute called year
 	 * post: the year when the pet got in to the veterinary has been set
-	 * @param year
+	 * @param year first year of the pet in the vet.
 	 */
 	public void setYear(int year) {
 		this.year = year;
@@ -167,7 +167,7 @@ public class MedicalRecord {
 
 	/** Description The method allows to obtain the weight of the pet.
 	* pre:Existence of the relationship between the pet and the medical record, the weight it's not null
-    *@return:A double representing the weight of the pet 
+    *@return A double representing the weight of the pet 
     */
 	public double getWeight() {
 		return thePetRecord.getWeight();
@@ -179,21 +179,19 @@ public class MedicalRecord {
 
 	/** Description The method allows to obtain the type of the pet.
 	* pre:Existence of the relationship between the pet and the medical record, the type it's not null
-    *@return:A char representing the type of the pet 
+    *@return A char representing the type of the pet 
     */
 	public char getType() {
 		return thePetRecord.getAnimalType();
 	}
 
-//	public void setType(Pet thePetRecord) {
-//		this.th = type;
-//	}
+
 
 	/**
 	 * Description The method allows to obtain the status of the medical record. 
 	 * pre:Existence of an attribute called status
 	 * 
-	 * @return:A String representing the status of the medical record.
+	 * @return A String representing the status of the medical record.
 	 */
 	public String getStatus() {
 		return status;
@@ -203,7 +201,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the status of the medical record
 	 * pre: Existance of an attribute called status
 	 * post: the status has been set by parameter
-	 * @param status
+	 * @param status the status of the medical record.
 	 */
 	public void setStatus(String status) {
 		this.status = status;
@@ -213,7 +211,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the symptom of the medical record. 
 	 * pre:Existence of an attribute called symptom
 	 * 
-	 * @return:A String representing the symptom of the respective the medical record.
+	 * @return A String representing the symptom of the respective the medical record.
 	 */
 	public String getSymptom() {
 		return symptom;
@@ -223,7 +221,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the symptom of the medical record
 	 * pre: Existance of an attribute called symptom
 	 * post: the symptom has been set by parameter
-	 * @param symptom
+	 * @param symptom the symptom of the medical record.
 	 */
 	public void setSymptom(String symptom) {
 		this.symptom = symptom;
@@ -233,7 +231,7 @@ public class MedicalRecord {
 	 * Description The method allows to obtain the diagnosis of the medical record. 
 	 * pre:Existence of an attribute called diagnosis
 	 * 
-	 * @return:A String representing the of diagnosis of the medical record.
+	 * @return A String representing the of diagnosis of the medical record.
 	 */
 	public String getDiagnosis() {
 		return diagnosis;
@@ -243,7 +241,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the diagnosis of the medical record
 	 * pre: Existance of an attribute called diagnosis
 	 * post: the diagnosis has been set by parameter
-	 * @param diagnosis
+	 * @param diagnosis the diagnosis of the medical record.
 	 */
 	public void setDiagnosis(String diagnosis) {
 		this.diagnosis = diagnosis;
@@ -263,7 +261,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the list of medicines a medical record have
 	 * pre: Existence of the medicine that the list has.
 	 * post: The list have been modified by parameter with a Medicine object
-	 * @param medicinePet
+	 * @param medicinePet the medicine of the medical record.
 	 */
 
 	public void setMedicinePet(ArrayList<Medicine> medicinePet) {
@@ -283,7 +281,7 @@ public class MedicalRecord {
 	 * Description The method allows to set the pet of the medical record
 	 * pre: Existance of the pet
 	 * post: the pet of the medical record has been set by parameter
-	 * @param thePetRecord
+	 * @param thePetRecord the pet of the medical record.
 	 */
 	public void setThePetRecord(Pet thePetRecord) {
 		this.thePetRecord = thePetRecord;
@@ -294,9 +292,9 @@ public class MedicalRecord {
 	 * is in the veterinary since its medical record where open to when it is closed
 	 *  pre: Existance of the date of admission and the departure date
 	 *  post: The days are calculated
-	 * @param days
-	 * @param months
-	 * @param years
+	 * @param days firs day of the pet in the vet
+	 * @param months first month of the pet in the vet
+	 * @param years first year of the pet in the vet
 	 * @return An integer with the days the pet has been in the veterinary
 	 */
 	public int toDays(int days, int months, int years) {
@@ -308,9 +306,9 @@ public class MedicalRecord {
 	 * is in the veterinary since its medical record where open to when it is closed
 	 *  pre: Existance of the date of admission and the departure date
 	 *  post: The days are calculated
-	 * @param days
-	 * @param months
-	 * @param years
+	 * @param days last day of the pet in the vet.
+	 * @param months last month of the pet in the vet.
+	 * @param years last year of the pet in the vet.
 	 * @return An integer with the days the pet has been in the veterinary
 	 */
 	public int getTotalDays() {
@@ -380,5 +378,20 @@ public class MedicalRecord {
 		symptomAdd = getSymptom() + "\n"+ symptomToAdd;
 		setSymptom(symptomAdd);
 		
+	}
+	public int daysHsinceHumanity() {
+		int totalDays= ((yearOut-1)*360 + (monthOut-1)*30 + dayOut);
+		return totalDays;
+		
+	}
+	
+	public int dayss() {
+		int totaldayss=((yearOut-1)*360 + (monthOut-1)*30 + dayOut);
+		return totaldayss;
+	}
+	//PARA VER CUANTOS DIAS LLEVA EN LA VETERINARIA
+	public int daysH() {
+		int totalDaysH= (((yearOut-1)*360 + (monthOut-1)*30 + dayOut) -((year-1)*360 + (month-1)*30 + day));
+		return totalDaysH;
 	}
 }

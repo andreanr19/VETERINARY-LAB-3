@@ -39,7 +39,7 @@ public class Pet {
 	 * Description The method allows to obtain the name of the pet. 
 	 * pre:Existence of an attribute called name
 	 * 
-	 * @return:A String representing the name of the pet
+	 * @return A String representing the name of the pet
 	 */
 	public String getName() {
 		return name;
@@ -49,7 +49,7 @@ public class Pet {
 	 * Description The method allows to set the name of the pet. pre:Existence of an
 	 * attribute called name
 	 * 
-	 * @param name
+	 * @param name the name of the pet.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -59,7 +59,7 @@ public class Pet {
 	 * Description The method allows to obtain the age of the pet. pre:Existence of
 	 * an attribute called age
 	 * 
-	 * @return:An integer representing the age of the pet
+	 * @return An integer representing the age of the pet
 	 */
 	public int getAge() {
 		return age;
@@ -70,7 +70,7 @@ public class Pet {
 	 * pre: Existence of an
 	 * attribute called age
 	 * 
-	 * @param age
+	 * @param age the age of the pet.
 	 */
 	public void setAge(int age) {
 		this.age = age;
@@ -78,7 +78,7 @@ public class Pet {
 
 	/** Description The method allows to obtain the type of the pet.
 	* pre:Existence of an attribute called type
-    *@return:A String representing the type of the pet 
+    *@return A String representing the type of the pet 
     */
 	public char getAnimalType() {
 		return animalType;
@@ -86,7 +86,7 @@ public class Pet {
 
 	/** Description the method allows to set the type of the pet.
 	 * pre: Existence of an attribute called type
-	 * @param animalType
+	 * @param animalType the type of pet.
 	 */
 	public void setAnimalType(char animalType) {
 		this.animalType = animalType;
@@ -94,7 +94,7 @@ public class Pet {
 	
 	/** Description The method allows to obtain the owner of the pet.
 	* pre:Existence of a relationship of the class Pet and the class Client.
-    *@return:A object of type Client representing the owner of the pet 
+    *@return A object of type Client representing the owner of the pet 
     */
 
 	public Client getOwner() {
@@ -103,7 +103,7 @@ public class Pet {
 
 	/** Description The method allows to set the owner of the pet.
 	 * pre:Existence of a relationship of the class Pet and the class Client.
-	 * @param owner
+	 * @param owner the owner of the pet.
 	 */
 	public void setOwner(Client owner) {
 		this.owner = owner;
@@ -111,7 +111,7 @@ public class Pet {
 
 	/** Description The method allows to obtain the medical history of the pet.
 	* pre:Existence of a relationship of the class Pet and the class MedicalHistory.
-    *@return:A object of type MedicalHistory representing the medical history of the pet 
+    *@return A object of type MedicalHistory representing the medical history of the pet 
     */
 	public MedicalHistory getHistory() {
 		return history;
@@ -119,7 +119,7 @@ public class Pet {
 
 	/** Description The method allows to set the history of the pet.
 	 * pre:Existence of a relationship of the class Pet and the class MedicalHistory.
-	 * @param history
+	 * @param history the history of the pet
 	 */
 	public void setHistory(MedicalHistory history) {
 		this.history = history;
@@ -127,7 +127,7 @@ public class Pet {
 	
 	/** Description The method allows to obtain the service of the pet.
 	* pre:Existence of a relationship of the class Pet and the class Service.
-    *@return:A object of type Service representing the service of the pet 
+    *@return A object of type Service representing the service of the pet 
     */
 	public Service getService() {
 		return services;
@@ -136,7 +136,7 @@ public class Pet {
 	
 	/** Description The method allows to set the service of the pet.
 	 * pre:Existence of a relationship of the class Pet and the class Service.
-	 * @param services
+	 * @param services the service of the pet
 	 */
 	public void setService(Service services) {
 		this.services = services;
@@ -144,7 +144,7 @@ public class Pet {
 	
 	/** Description The method allows to obtain the weight of the pet.
 	* pre:Existence of an attribute called weight.
-    *@return:A double representing the weight of the pet 
+    *@return A double representing the weight of the pet 
     */
 	public double getWeight() {
 		return weight;
@@ -154,7 +154,7 @@ public class Pet {
 	 * Description The method allows to set the weight of the pet 
 	 * pre: Existence of an attribute called weight
 	 * 
-	 * @param weight
+	 * @param weight the weight of the pet.
 	 */
 	public void setWeight(double weight) {
 		this.weight = weight;
@@ -162,7 +162,7 @@ public class Pet {
 
 	/** Description The method allows to obtain the height of the pet.
 	* pre:Existence of an attribute called height.
-    *@return:A double representing the height of the pet 
+    *@return A double representing the height of the pet 
     */
 	public double getHeight() {
 		return height;
@@ -172,29 +172,12 @@ public class Pet {
 	 * Description The method allows to set the height of the pet 
 	 * pre: Existence of an attribute called height
 	 * 
-	 * @param height
+	 * @param height the height of the pet.
 	 */
 	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	/**
-	 * Description The method allows to add a service to a pet
-	 * pre: Existance of the pet and its owner.
-	 * post: the service is added to the pet
-	 * @param type
-	 */
-	public void addServiceToAPet(String type) {
-		double priceCost = services.calculatePriceOfService(type);
-
-		Service servicepet = new Service(type, priceCost);
-		servicepet.setPrice(priceCost);
-		servicepet.setType(type);
-		setService(servicepet);
-		servicepet.setThePet(this);
-		servicepet.setTheClient(getOwner());
-
-	}
 
 	/**
 	 * Description This method allows to calculate the body mass index for a pet.
@@ -242,4 +225,13 @@ public class Pet {
 		setHistory(newMedicalH);
 	}
 
+	//PARA VER CUANTOS EN CUANTOS DIAS DESDE QUE ESTA EN LA VETERIANARIA SE REALIZO EL SERVICIO
+	public int daysService() {
+		int totalDaysService= (history.getMedicalRecordV().get(0).daysHsinceHumanity() - services.toDays());
+		return totalDaysService;
+	}
 }
+
+
+
+

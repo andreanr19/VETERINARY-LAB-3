@@ -141,7 +141,7 @@ public class MainT {
 							newMrPet.getMedicinePet().add(newMedicineNewPet);
 							myVeterinary.addHistory(newMdPet);
 
-							Service serviceNewPet = new Service("ninguno", 0);
+							Service serviceNewPet = new Service("ninguno", 0, 0, 0, 0);
 							newPet.setService(serviceNewPet);
 							serviceNewPet.setTheClient(newClient);
 							serviceNewPet.setThePet(newPet);
@@ -266,8 +266,15 @@ public class MainT {
 				System.out.println(myVeterinary.showInformationServices());
 
 				String typeNewService = input.nextLine();
+				System.out.println("Enter the day when the service is gonna be realized");
+				int dayS=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the month when the service is gonna be realized");
+				int monthS=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the year when the service is gonna be realized");
+				int yearS= input.nextInt();
 
-				myVeterinary.addServiceToAPet(nameO, nameP, typeNewService);
+				// myVeterinary.addServiceToAPet(nameO, nameP, typeNewService);
+				myVeterinary.addServiceToAPet2(nameO, nameP, typeNewService, dayS, monthS, yearS);
 
 			} else if (option == 15) {
 				System.out.println(myVeterinary.calculateEarningsForServices());
@@ -276,7 +283,37 @@ public class MainT {
 				System.out.println(myVeterinary.calculateTotalEarningsOfVeterinary());
 			} else if (option == 17) {
 				System.out.println(myVeterinary.calculateTheAverageForServices());
+				System.out.println(myVeterinary.calculateTheAverageForServicess());
 
+			}else if(option ==18){
+				System.out.println("First take a check at the veterinary's income over time");
+				System.out.println(myVeterinary.infoServices());
+				System.out.println("Now enter the following information");
+				System.out.println("Enter the day");
+				int day= Integer.parseInt(input.nextLine());
+				System.out.println("Enter the month");
+				int month = Integer.parseInt(input.nextLine());
+				System.out.println("Enter the year");
+				int year = input.nextInt();
+				System.out.println(myVeterinary.IncomeBetweenAWeek(day, month, year));
+				
+			}else if(option ==19) {
+				
+				System.out.println("Enter the start day");
+				int startday=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the start month");
+				int startmonth=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the start year");
+				int startyear=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the last day");
+				int Endday=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the last month");
+				int Endmonth=Integer.parseInt(input.nextLine());
+				System.out.println("Enter the last year");
+				int Endyear=Integer.parseInt(input.nextLine());
+				System.out.println(myVeterinary.reportWithADateGiven(startday, startmonth, startyear, Endday, Endmonth, Endyear));
+				
+			
 			}
 
 		}
@@ -301,6 +338,8 @@ public class MainT {
 		System.out.println("15.To see the incomes based on services");
 		System.out.println("16.To see the TOTAL incomes of the veterinary");
 		System.out.println("17.To see the average of income based on services of the veterinary");
+		System.out.println("18.To see the earning from services in a week");
+		System.out.println("19.To see a report between a given date");
 
 	}
 
@@ -313,7 +352,7 @@ public class MainT {
 		MedicalHistory md1 = new MedicalHistory(); // Pet's 1 Medical History initialized
 		md1.setTheClient(client1);
 		md1.setThePet(pet1);
-		MedicalRecord mr1 = new MedicalRecord("GripaFlu", "The pet has flu", 20, 3, 2019, 6, 4, 2019); // Pet's 1
+		MedicalRecord mr1 = new MedicalRecord("GripaFlu", "The pet has flu", 15, 2, 2019, 6, 4, 2019); // Pet's 1
 		myVeterinary.addHistory(md1); // Medical
 		// Record
 		// initialized
@@ -326,7 +365,7 @@ public class MainT {
 		pet1.setOwner(client1);
 		pet1.setHistory(md1);
 		myVeterinary.getMinirooms()[0].setPetRoom(pet1);
-		Service servicePet1 = new Service(Service.SHOWERSERVICE, Service.SHOWER);
+		Service servicePet1 = new Service(Service.SHOWERSERVICE, Service.SHOWER, 1, 3, 2019);
 		pet1.setService(servicePet1);
 		servicePet1.setTheClient(client1);
 		servicePet1.setThePet(pet1);
@@ -351,10 +390,10 @@ public class MainT {
 		pet11.setOwner(client1);
 		pet11.setHistory(md11);
 		myVeterinary.getMinirooms()[2].setPetRoom(pet11);
-		Service servicePet11 = new Service(Service.VACCINATIONSERVICE, Service.VACCINATION);
+		Service servicePet11 = new Service(Service.VACCINATIONSERVICE, Service.VACCINATION, 27, 1, 2019);
 		pet11.setService(servicePet11);
 		servicePet11.setTheClient(client1);
-		servicePet11.setThePet(pet1);
+		servicePet11.setThePet(pet11);
 		myVeterinary.addService(servicePet11);
 //----------------------------------------------------------------------------------------------------------------------
 //		// CLIENT LARRY PET RUFUS
@@ -386,7 +425,7 @@ public class MainT {
 		pet2.setHistory(md2);
 		myVeterinary.getMinirooms()[1].setPetRoom(pet2);
 		myVeterinary.addHistory(md2);
-		Service servicePet2 = new Service(Service.NAILSCUTSERVICE, Service.NAILSCUT);
+		Service servicePet2 = new Service(Service.NAILSCUTSERVICE, Service.NAILSCUT, 3, 3, 2019);
 		pet2.setService(servicePet2);
 		servicePet2.setTheClient(client2);
 		servicePet2.setThePet(pet2);
@@ -397,20 +436,20 @@ public class MainT {
 		MedicalHistory md22 = new MedicalHistory(); // Pet's 1.1 Medical History initialized
 		md22.setTheClient(client2);
 		md22.setThePet(pet22);
-		MedicalRecord mr22 = new MedicalRecord("Sick of love", "The pet is sick of love", 3, 3, 2019, 4, 4, 2019); // Pet's
+		MedicalRecord mr22 = new MedicalRecord("fever", "The pet has the tongue damaged", 3, 3, 2019, 4, 4, 2019); // Pet's
 																													// 1.1
 		myVeterinary.addHistory(md22); // Medical
 		// Record
 		// initialized
 		mr22.setThePetRecord(pet22);
 		md22.getMedicalRecordV().add(mr22);
-		Medicine medicinePet22 = new Medicine("Aspirina", "5 ml", 5000, 3); // Pet's 1.1 Medicine initialized
+		Medicine medicinePet22 = new Medicine("Mg milk", "5 ml", 5000, 3); // Pet's 1.1 Medicine initialized
 		mr22.getMedicinePet().add(medicinePet22);
 		client2.getPetClient().add(pet22);
 		pet22.setOwner(client2);
 		pet22.setHistory(md22);
 		myVeterinary.getMinirooms()[3].setPetRoom(pet22);
-		Service servicePet22 = new Service(Service.VACCINATIONSERVICE, Service.VACCINATION);
+		Service servicePet22 = new Service(Service.VACCINATIONSERVICE, Service.VACCINATION, 2, 3, 2019);
 		pet22.setService(servicePet22);
 		servicePet22.setTheClient(client2);
 		servicePet22.setThePet(pet22);
